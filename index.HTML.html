@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="JanYatra — smart public transportation" />
+    <title>JanYatra — Smarter journeys</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="demo-strip" id="data-strip" role="status"><span>CONNECTING</span> Checking vehicle telemetry service…</div>
+    <header class="site-header">
+      <a class="brand" href="#/" aria-label="JanYatra home"><span class="brand-mark" aria-hidden="true"><i data-lucide="bus-front"></i></span><span>JAN<span>YATRA</span></span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#/">Home</a><a href="#/live-buses">Live buses</a><a href="#/routes">Routes</a><a href="#/crowd">Crowd</a><a href="#/analytics">Analytics</a>
+      </nav>
+      <div class="header-actions"><button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode"><i data-lucide="moon"></i></button><a class="icon-btn" id="alerts-link" href="#/profile" aria-label="Saved journey alerts"><i data-lucide="bell"></i></a><a class="avatar" href="#/profile" aria-label="Your profile">AP</a><button class="sos-mini" data-sos>SOS</button></div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <nav class="mobile-nav" aria-label="Mobile navigation"><a href="#/"><i data-lucide="house"></i><span>Home</span></a><a href="#/live-buses"><i data-lucide="map"></i><span>Live</span></a><a href="#/routes"><i data-lucide="route"></i><span>Routes</span></a><a href="#/crowd"><i data-lucide="users"></i><span>Crowd</span></a><a href="#/profile"><i data-lucide="circle-user"></i><span>Profile</span></a></nav>
+    <div class="toast" id="toast" role="status"></div>
+    <dialog class="modal" id="sos-modal"><form method="dialog"><button class="modal-close" value="cancel" aria-label="Close"><i data-lucide="x"></i></button><div class="modal-icon danger"><i data-lucide="shield-alert"></i></div><h2>Send SOS?</h2><p>This will create an emergency request with your current journey information. It does not contact emergency services directly.</p><div class="journey-summary"><span>Current journey</span><strong>Bus 204 · Jaipur → Shahpura</strong><small>Near Civil Lines · 10:42 AM</small></div><div class="modal-actions"><button class="btn secondary" value="cancel">Cancel</button><button class="btn danger" id="confirm-sos" value="default">Confirm SOS</button></div></form></dialog>
+    <script>
+      /* Set these at deployment time; no API secret belongs in this client. */
+      window.JANYATRA_CONFIG = window.JANYATRA_CONFIG || { apiBaseUrl: '', telemetryWsUrl: '', mapTilesUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
